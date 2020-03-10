@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:pizza_delivery/answer.dart';
 
 import 'package:pizza_delivery/app_colors.dart';
+import 'package:pizza_delivery/main_menu.dart';
+import 'package:pizza_delivery/menu_item.dart';
+import 'package:pizza_delivery/question.dart';
 
 void main() => runApp(PizzaDeliveryApp());
 
@@ -31,18 +35,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  var options = [
-    'I want to order a pizza',
-    'I want to see my favourite pizzas',
-    'I want to check my profile',
-  ];
+  MenuItem selectedItem;
 
-  var currentIndex = 0;
-
-  void selectOption(int idx) {
+  void selectOption(MenuItem item) {
     setState(() {
-      currentIndex = idx;
-      print('Pressed $currentIndex');
+      selectedItem = item;
+      print('Pressed ${selectedItem.index}');
     });
   }
 
@@ -54,22 +52,9 @@ class _HomeState extends State<Home> {
       ),
       body: Column(
         children: <Widget>[
-          Text('What do you want?'),
-          Text(options[currentIndex]),
-          RaisedButton(
-            onPressed: () => selectOption(0),
-            child: Text('Order'),
-          ),
-          RaisedButton(
-            onPressed: () => selectOption(1),
-            child: Text('Favourites'),
-          ),
-          RaisedButton(
-            onPressed: () {
-              selectOption(2);
-            },
-            child: Text('Profile'),
-          ),
+          Question(),
+          Answer(item: selectedItem),
+          MainMenu(onOptionSelected: selectOption),
         ],
       ),
     );
