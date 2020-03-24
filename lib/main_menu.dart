@@ -1,28 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/menu_button.dart';
 import 'package:pizza_delivery/menu_item.dart';
+import 'package:pizza_delivery/order.dart';
 
 class MainMenu extends StatelessWidget {
-  final Function onOptionSelected;
-
-  MainMenu({@required this.onOptionSelected})
-      : assert(onOptionSelected != null);
+  void menuItemSelected(MenuItem item, BuildContext context) {
+    switch (item) {
+      case MenuItem.order:
+        Navigator.pushNamed(
+          context,
+          '/order',
+          arguments: OrderArguments('Main Menu'),
+        );
+        break;
+      default:
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         MenuButton(
-          onPressed: () => onOptionSelected(MenuItem.order),
+          onPressed: () => menuItemSelected(MenuItem.order, context),
           text: 'Order',
+          iconAssetName: 'images/pizza.svg',
         ),
         MenuButton(
-          onPressed: () => onOptionSelected(MenuItem.favourites),
+          onPressed: () => menuItemSelected(MenuItem.favourites, context),
           text: 'Favourites',
+          iconAssetName: 'images/favourites.svg',
         ),
         MenuButton(
-          onPressed: () => onOptionSelected(MenuItem.profile),
+          onPressed: () => menuItemSelected(MenuItem.profile, context),
           text: 'Profile',
+          iconAssetName: 'images/profile.svg',
         ),
       ],
     );

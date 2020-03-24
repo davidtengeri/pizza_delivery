@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:pizza_delivery/answer.dart';
+import 'package:flutter_svg/svg.dart';
 
 import 'package:pizza_delivery/app_colors.dart';
+import 'package:pizza_delivery/main_drawer.dart';
 import 'package:pizza_delivery/main_menu.dart';
 import 'package:pizza_delivery/menu_item.dart';
-import 'package:pizza_delivery/question.dart';
+import 'package:pizza_delivery/order.dart';
 
 void main() => runApp(PizzaDeliveryApp());
 
@@ -24,7 +25,11 @@ class PizzaDeliveryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: _buildThemeData(),
-      home: Home(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Home(),
+        '/order': (context) => Order(),
+      },
     );
   }
 }
@@ -35,14 +40,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  MenuItem selectedItem;
-
-  void selectOption(MenuItem item) {
-    setState(() {
-      selectedItem = item;
-      print('Pressed ${selectedItem.index}');
-    });
-  }
+  String selectedPizza;
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +48,32 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text('Pizza Delivery'),
       ),
+      drawer: MainDrawer(),
       body: Column(
         children: <Widget>[
-          Question(),
-          Answer(item: selectedItem),
-          MainMenu(onOptionSelected: selectOption),
+          MainMenu(),
+          if (selectedPizza != null) Text(selectedPizza),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          final result = await Navigator.pushNamed(
+            context,
+            '/order',
+            arguments: OrderArguments('Floating action'),
+          );
+          setState(() {
+            selectedPizza = result;
+          });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(50),
+          ),
+          padding: EdgeInsets.all(5),
+          child: SvgPicture.asset('images/pizza.svg'),
+        ),
       ),
     );
   }
