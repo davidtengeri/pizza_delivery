@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pizza_delivery/cart_button.dart';
 
 import 'package:pizza_delivery/app_colors.dart';
 import 'package:pizza_delivery/main_drawer.dart';
-import 'package:pizza_delivery/main_menu.dart';
-import 'package:pizza_delivery/menu_item.dart';
 import 'package:pizza_delivery/order.dart';
+import 'package:pizza_delivery/order/cart_model.dart';
+import 'package:pizza_delivery/pizza_delivery_logo.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(PizzaDeliveryApp());
+void main() => runApp(ChangeNotifierProvider(
+      create: (_) => CartModel(),
+      child: PizzaDeliveryApp(),
+    ));
 
 class PizzaDeliveryApp extends StatelessWidget {
   ThemeData _buildThemeData() => ThemeData(
@@ -34,37 +39,26 @@ class PizzaDeliveryApp extends StatelessWidget {
   }
 }
 
-class Home extends StatefulWidget {
-  @override
-  _HomeState createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  String selectedPizza;
-
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pizza Delivery'),
+        actions: <Widget>[CartButton()],
       ),
       drawer: MainDrawer(),
-      body: Column(
-        children: <Widget>[
-          MainMenu(),
-          if (selectedPizza != null) Text(selectedPizza),
-        ],
+      body: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(25),
+        child: PizzaDeliveryLogo(Theme.of(context).primaryColor),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final result = await Navigator.pushNamed(
+        onPressed: () {
+          Navigator.pushNamed(
             context,
             '/order',
-            arguments: OrderArguments('Floating action'),
           );
-          setState(() {
-            selectedPizza = result;
-          });
         },
         child: Container(
           decoration: BoxDecoration(

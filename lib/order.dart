@@ -1,39 +1,27 @@
 import 'package:flutter/material.dart';
-
-class OrderArguments {
-  String from;
-
-  OrderArguments(this.from);
-}
+import 'package:flutter_svg/svg.dart';
+import 'package:pizza_delivery/cart_button.dart';
+import 'package:pizza_delivery/order/cart_model.dart';
+import 'package:pizza_delivery/order/pizza.dart';
+import 'package:pizza_delivery/pizza_card.dart';
+import 'package:provider/provider.dart';
 
 class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    OrderArguments orderArguments = ModalRoute.of(context).settings.arguments;
-
     return Container(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Order a pizza'),
-        ),
-        body: Container(
-          width: double.infinity,
-          padding: EdgeInsets.all(30),
-          child: Column(
-            children: <Widget>[
-              Text('You came here by ${orderArguments.from}'),
-              RaisedButton(
-                onPressed: () => Navigator.pop(context, 'Margherita'),
-                child: Text('Margherita'),
-              ),
-              RaisedButton(
-                onPressed: () => Navigator.pop(context, 'Pepperoni'),
-                child: Text('Pepperoni'),
-              ),
-            ],
-          ),
+        child: Scaffold(
+      appBar: AppBar(
+        title: Text('Order a pizza'),
+        actions: <Widget>[CartButton()],
+      ),
+      body: Container(
+        width: double.infinity,
+        padding: EdgeInsets.all(10),
+        child: ListView(
+          children: pizzaList.map((pizza) => PizzaCard(pizza: pizza)).toList(),
         ),
       ),
-    );
+    ));
   }
 }

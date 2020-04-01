@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/menu_button.dart';
 import 'package:pizza_delivery/menu_item.dart';
-import 'package:pizza_delivery/order.dart';
 
 class MainMenu extends StatelessWidget {
   void menuItemSelected(MenuItem item, BuildContext context) {
     switch (item) {
       case MenuItem.order:
-        Navigator.pushNamed(
+        Navigator.popAndPushNamed(
           context,
           '/order',
-          arguments: OrderArguments('Main Menu'),
         );
         break;
       default:
