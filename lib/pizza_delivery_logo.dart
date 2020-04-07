@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 
 class PizzaDeliveryLogo extends StatelessWidget {
   final Color textColor;
@@ -11,9 +12,9 @@ class PizzaDeliveryLogo extends StatelessWidget {
     return Column(
       children: <Widget>[
         Text(
-          'Pizza Delivery',
+          PizzaDeliveryLocalizations.of(context).appTitle,
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 20,
             color: textColor,
           ),
         ),

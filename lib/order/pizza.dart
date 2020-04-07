@@ -1,3 +1,5 @@
+import 'package:quiver/core.dart';
+
 class Topping {
   String name;
   String image;
@@ -18,6 +20,14 @@ class Pizza {
   double price;
 
   Pizza(this.name, this.image, this.price, this.toppings);
+
+  bool operator ==(Object other) =>
+      other is Pizza &&
+      other.image == image &&
+      other.name == name &&
+      other.price == price;
+
+  int get hashCode => hash3(name.hashCode, image.hashCode, price.hashCode);
 }
 
 final pizzaList = [

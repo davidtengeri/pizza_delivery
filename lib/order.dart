@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:pizza_delivery/cart_button.dart';
-import 'package:pizza_delivery/order/cart_model.dart';
+import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/order/pizza.dart';
 import 'package:pizza_delivery/pizza_card.dart';
-import 'package:provider/provider.dart';
 
 class Order extends StatelessWidget {
   @override
@@ -12,7 +10,7 @@ class Order extends StatelessWidget {
     return Container(
         child: Scaffold(
       appBar: AppBar(
-        title: Text('Order a pizza'),
+        title: Text(PizzaDeliveryLocalizations.of(context).orderTitle),
         actions: <Widget>[CartButton()],
       ),
       body: Container(

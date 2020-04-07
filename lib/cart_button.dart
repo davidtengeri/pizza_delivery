@@ -30,11 +30,14 @@ class CartButton extends StatelessWidget {
                     width: 1,
                   )),
               padding: EdgeInsets.all(5),
-              child: Text(
-                Provider.of<CartModel>(context).items.length.toString(),
-                style: TextStyle(
-                  color: AppColors.accentColor,
-                  fontWeight: FontWeight.bold,
+              child: Selector<CartModel, int>(
+                selector: (context, CartModel cart) => cart.items.length,
+                builder: (context, length, child) => Text(
+                  length.toString(),
+                  style: TextStyle(
+                    color: AppColors.accentColor,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:pizza_delivery/cart_button.dart';
 
 import 'package:pizza_delivery/app_colors.dart';
+import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/main_drawer.dart';
 import 'package:pizza_delivery/order.dart';
 import 'package:pizza_delivery/order/cart_model.dart';
+import 'package:pizza_delivery/order/favourites_model.dart';
 import 'package:pizza_delivery/pizza_delivery_logo.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(ChangeNotifierProvider(
-      create: (_) => CartModel(),
-      child: PizzaDeliveryApp(),
-    ));
+void main() => runApp(
+      MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => CartModel()),
+          ChangeNotifierProvider(create: (_) => FavouritesModel()),
+        ],
+        child: PizzaDeliveryApp(),
+      ),
+    );
 
 class PizzaDeliveryApp extends StatelessWidget {
   ThemeData _buildThemeData() => ThemeData(
@@ -35,6 +43,16 @@ class PizzaDeliveryApp extends StatelessWidget {
         '/': (context) => Home(),
         '/order': (context) => Order(),
       },
+      localizationsDelegates: [
+        // ... app-specific localization delegate[s] here
+        PizzaDeliveryLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', ''),
+        const Locale('hu', ''),
+      ],
     );
   }
 }
@@ -44,7 +62,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pizza Delivery'),
+        title: Text(PizzaDeliveryLocalizations.of(context).appTitle),
         actions: <Widget>[CartButton()],
       ),
       drawer: MainDrawer(),

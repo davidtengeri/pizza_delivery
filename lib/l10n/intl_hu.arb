@@ -1,0 +1,34 @@
+{
+  "@@last_modified": "2020-04-06T23:52:28.645916",
+  "appTitle": "Pizza Házhozszállítás",
+  "@appTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "orderTitle": "Rendelj egy pizzát",
+  "@orderTitle": {
+    "description": "Title for the Order screen",
+    "type": "text",
+    "placeholders": {}
+  },
+  "orderMenu": "Rendelés",
+  "@orderMenu": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "favouritesMenu": "Kedvencek",
+  "@favouritesMenu": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileMenu": "Profil",
+  "@profileMenu": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "inCart": "Kosárban",
+  "@inCart": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
