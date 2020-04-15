@@ -30,5 +30,55 @@
   "@inCart": {
     "type": "text",
     "placeholders": {}
+  },
+  "profileTitle": "Profile",
+  "@profileTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileSaved": "Profile saved",
+  "@profileSaved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mandatoryField": "This field is mandatory",
+  "@mandatoryField": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterYourName": "Enter your name",
+  "@enterYourName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "name": "Name",
+  "@name": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterYourEmail": "Enter your email",
+  "@enterYourEmail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "email": "Email",
+  "@email": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterYourPhone": "Enter your phone number",
+  "@enterYourPhone": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phone": "Phone",
+  "@phone": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "save": "Save",
+  "@save": {
+    "type": "text",
+    "placeholders": {}
   }
 }

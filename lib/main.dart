@@ -10,17 +10,24 @@ import 'package:pizza_delivery/order.dart';
 import 'package:pizza_delivery/order/cart_model.dart';
 import 'package:pizza_delivery/order/favourites_model.dart';
 import 'package:pizza_delivery/pizza_delivery_logo.dart';
+import 'package:pizza_delivery/profile.dart';
+import 'package:pizza_delivery/profile/profile_repository.dart';
+import 'package:pizza_delivery/sql.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(
-      MultiProvider(
-        providers: [
-          ChangeNotifierProvider(create: (_) => CartModel()),
-          ChangeNotifierProvider(create: (_) => FavouritesModel()),
-        ],
-        child: PizzaDeliveryApp(),
-      ),
-    );
+void main() {
+  final sql = Sql();
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => CartModel()),
+        ChangeNotifierProvider(create: (_) => FavouritesModel()),
+        Provider(create: (_) => ProfileRepository(sql: sql)),
+      ],
+      child: PizzaDeliveryApp(),
+    ),
+  );
+}
 
 class PizzaDeliveryApp extends StatelessWidget {
   ThemeData _buildThemeData() => ThemeData(
@@ -40,8 +47,9 @@ class PizzaDeliveryApp extends StatelessWidget {
       theme: _buildThemeData(),
       initialRoute: '/',
       routes: {
-        '/': (context) => Home(),
-        '/order': (context) => Order(),
+        '/': (_) => Home(),
+        '/order': (_) => Order(),
+        '/profile': (_) => Profile(),
       },
       localizationsDelegates: [
         // ... app-specific localization delegate[s] here

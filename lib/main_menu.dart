@@ -12,6 +12,9 @@ class MainMenu extends StatelessWidget {
           '/order',
         );
         break;
+      case MenuItem.profile:
+        Navigator.popAndPushNamed(context, '/profile');
+        break;
       default:
     }
   }

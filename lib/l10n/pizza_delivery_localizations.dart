@@ -13,8 +13,6 @@ class PizzaDeliveryLocalizations {
         locale.countryCode.isEmpty ? locale.languageCode : locale.toString();
     final String localeName = Intl.canonicalizedLocale(name);
 
-    print(localeName);
-
     return initializeMessages(localeName).then((_) {
       return PizzaDeliveryLocalizations(localeName);
     });
@@ -73,6 +71,134 @@ class PizzaDeliveryLocalizations {
     return Intl.message(
       'In cart',
       name: 'inCart',
+      locale: localeName,
+    );
+  }
+
+  String get profileTitle {
+    return Intl.message(
+      'Profile',
+      name: 'profileTitle',
+      locale: localeName,
+    );
+  }
+
+  String get profileSaved {
+    return Intl.message(
+      'Profile saved',
+      name: 'profileSaved',
+      locale: localeName,
+    );
+  }
+
+  String get mandatoryField {
+    return Intl.message(
+      'This field is mandatory',
+      name: 'mandatoryField',
+      locale: localeName,
+    );
+  }
+
+  String get enterYourName {
+    return Intl.message(
+      'Enter your name',
+      name: 'enterYourName',
+      locale: localeName,
+    );
+  }
+
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      locale: localeName,
+    );
+  }
+
+  String get enterYourEmail {
+    return Intl.message(
+      'Enter your email',
+      name: 'enterYourEmail',
+      locale: localeName,
+    );
+  }
+
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      locale: localeName,
+    );
+  }
+
+  String get enterYourPhone {
+    return Intl.message(
+      'Enter your phone number',
+      name: 'enterYourPhone',
+      locale: localeName,
+    );
+  }
+
+  String get phone {
+    return Intl.message(
+      'Phone',
+      name: 'phone',
+      locale: localeName,
+    );
+  }
+
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      locale: localeName,
+    );
+  }
+
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      locale: localeName,
+    );
+  }
+
+  String get city {
+    return Intl.message(
+      'City',
+      name: 'city',
+      locale: localeName,
+    );
+  }
+
+  String get street {
+    return Intl.message(
+      'Street',
+      name: 'street',
+      locale: localeName,
+    );
+  }
+
+  String get houseNumber {
+    return Intl.message(
+      'House Number',
+      name: 'houseNumber',
+      locale: localeName,
+    );
+  }
+
+  String get addAddressDialogTitle {
+    return Intl.message(
+      'Add a new address',
+      name: 'addAddressDialogTitle',
+      locale: localeName,
+    );
+  }
+
+  String get addressSaved {
+    return Intl.message(
+      'Address saved',
+      name: 'addressSaved',
       locale: localeName,
     );
   }

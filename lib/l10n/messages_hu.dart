@@ -20,12 +20,28 @@ class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'hu';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "appTitle" : MessageLookupByLibrary.simpleMessage("Pizza Házhozszállítás"),
-    "favouritesMenu" : MessageLookupByLibrary.simpleMessage("Kedvencek"),
-    "inCart" : MessageLookupByLibrary.simpleMessage("Kosárban"),
-    "orderMenu" : MessageLookupByLibrary.simpleMessage("Rendelés"),
-    "orderTitle" : MessageLookupByLibrary.simpleMessage("Rendelj egy pizzát"),
-    "profileMenu" : MessageLookupByLibrary.simpleMessage("Profil")
-  };
+  static _notInlinedMessages(_) => <String, Function>{
+        "appTitle":
+            MessageLookupByLibrary.simpleMessage("Pizza Házhozszállítás"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "enterYourEmail":
+            MessageLookupByLibrary.simpleMessage("Add meg az email címed"),
+        "enterYourName":
+            MessageLookupByLibrary.simpleMessage("Add meg a neved"),
+        "enterYourPhone":
+            MessageLookupByLibrary.simpleMessage("Add meg a telefonszámod"),
+        "favouritesMenu": MessageLookupByLibrary.simpleMessage("Kedvencek"),
+        "inCart": MessageLookupByLibrary.simpleMessage("Kosárban"),
+        "mandatoryField":
+            MessageLookupByLibrary.simpleMessage("Ez egy kötelező mező"),
+        "name": MessageLookupByLibrary.simpleMessage("Név"),
+        "orderMenu": MessageLookupByLibrary.simpleMessage("Rendelés"),
+        "orderTitle":
+            MessageLookupByLibrary.simpleMessage("Rendelj egy pizzát"),
+        "phone": MessageLookupByLibrary.simpleMessage("Telefonszám"),
+        "profileMenu": MessageLookupByLibrary.simpleMessage("Profil"),
+        "profileSaved": MessageLookupByLibrary.simpleMessage("Profil mentve"),
+        "profileTitle": MessageLookupByLibrary.simpleMessage("Profil"),
+        "save": MessageLookupByLibrary.simpleMessage("Mentés")
+      };
 }

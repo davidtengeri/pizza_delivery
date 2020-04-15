@@ -7,8 +7,7 @@ import 'package:pizza_delivery/pizza_card.dart';
 class Order extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: Text(PizzaDeliveryLocalizations.of(context).orderTitle),
         actions: <Widget>[CartButton()],
@@ -20,6 +19,6 @@ class Order extends StatelessWidget {
           children: pizzaList.map((pizza) => PizzaCard(pizza: pizza)).toList(),
         ),
       ),
-    ));
+    );
   }
 }

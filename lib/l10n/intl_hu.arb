@@ -30,5 +30,55 @@
   "@inCart": {
     "type": "text",
     "placeholders": {}
+  },
+  "profileTitle": "Profil",
+  "@profileTitle": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profileSaved": "Profil mentve",
+  "@profileSaved": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mandatoryField": "Ez egy kötelező mező",
+  "@mandatoryField": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterYourName": "Add meg a neved",
+  "@enterYourName": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "name": "Név",
+  "@name": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterYourEmail": "Add meg az email címed",
+  "@enterYourEmail": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "email": "Email",
+  "@email": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "enterYourPhone": "Add meg a telefonszámod",
+  "@enterYourPhone": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "phone": "Telefonszám",
+  "@phone": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "save": "Mentés",
+  "@save": {
+    "type": "text",
+    "placeholders": {}
   }
 }

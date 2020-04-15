@@ -22,10 +22,20 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "appTitle" : MessageLookupByLibrary.simpleMessage("Pizza Delivery"),
+    "email" : MessageLookupByLibrary.simpleMessage("Email"),
+    "enterYourEmail" : MessageLookupByLibrary.simpleMessage("Enter your email"),
+    "enterYourName" : MessageLookupByLibrary.simpleMessage("Enter your name"),
+    "enterYourPhone" : MessageLookupByLibrary.simpleMessage("Enter your phone number"),
     "favouritesMenu" : MessageLookupByLibrary.simpleMessage("Favourites"),
     "inCart" : MessageLookupByLibrary.simpleMessage("In cart"),
+    "mandatoryField" : MessageLookupByLibrary.simpleMessage("This field is mandatory"),
+    "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "orderMenu" : MessageLookupByLibrary.simpleMessage("Order"),
     "orderTitle" : MessageLookupByLibrary.simpleMessage("Order a pizza"),
-    "profileMenu" : MessageLookupByLibrary.simpleMessage("Profile")
+    "phone" : MessageLookupByLibrary.simpleMessage("Phone"),
+    "profileMenu" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "profileSaved" : MessageLookupByLibrary.simpleMessage("Profile saved"),
+    "profileTitle" : MessageLookupByLibrary.simpleMessage("Profile"),
+    "save" : MessageLookupByLibrary.simpleMessage("Save")
   };
 }
