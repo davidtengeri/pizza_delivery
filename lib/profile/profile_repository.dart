@@ -1,3 +1,5 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:pizza_delivery/location_service.dart';
 import 'package:pizza_delivery/sql.dart';
 import 'package:quiver/core.dart';
 import 'package:sqflite/sqlite_api.dart';
@@ -7,8 +9,9 @@ class Address {
   String city;
   String street;
   String houseNumber;
+  LatLng latLng;
 
-  Address({this.id, this.city, this.street, this.houseNumber});
+  Address({this.id, this.city, this.street, this.houseNumber, this.latLng});
 
   @override
   bool operator ==(Object value) =>
@@ -25,6 +28,8 @@ class Address {
       'city': city,
       'street': street,
       'houseNumber': houseNumber,
+      'lat': latLng.latitude,
+      'lng': latLng.longitude,
     };
     if (id != null) {
       map['id'] = id;
@@ -93,7 +98,10 @@ class ProfileRepository {
   Future<List<Address>> loadAllAddresses(Sql sql) async {
     final Database database = await sql.database;
     // Load all addresses from the addresses table
-    final List<Map<String, dynamic>> result = await database.query('addresses');
+    final List<Map<String, dynamic>> result = await database.query(
+      'addresses',
+      orderBy: 'id DESC',
+    );
 
     // Convert the map to Address object
     return List.generate(result.length, (i) {
@@ -102,6 +110,8 @@ class ProfileRepository {
         city: result[i]['city'],
         street: result[i]['street'],
         houseNumber: result[i]['houseNumber'],
+        latLng: LatLng(result[i]['lat'] ?? SZEGED_LATLNG.latitude,
+            result[i]['lng'] ?? SZEGED_LATLNG.longitude),
       );
     });
   }
