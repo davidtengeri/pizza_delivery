@@ -17,7 +17,7 @@ class Sql {
         await getDatabasesPath(),
         'pizza_delivery.db',
       ),
-      version: 1,
+      version: 2,
       // Creates the database and sets the version. If the version is incremented onUpdate will run
       onCreate: (db, version) async {
         // Separate execute calls needed if multiple tables are created
@@ -34,9 +34,21 @@ class Sql {
           id INTEGER PRIMARY KEY,
           city TEXT,
           street TEXT,
-          houseNumber TEXT
+          houseNumber TEXT,
+          lat REAL,
+          lng REAL
         );
         ''');
+      },
+      onUpgrade: (db, oldVersion, newVersion) async {
+        if (oldVersion == 1 && newVersion == 2) {
+          await db.execute('''
+          ALTER TABLE addresses ADD COLUMN lat REAL;
+          ''');
+          await db.execute('''
+          ALTER TABLE addresses ADD COLUMN lng REAL;
+          ''');
+        }
       },
     );
     return _database;

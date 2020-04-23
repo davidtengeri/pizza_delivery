@@ -4,6 +4,7 @@ import 'package:pizza_delivery/cart_button.dart';
 import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/profile/add_address_button.dart';
 import 'package:pizza_delivery/profile/profile_form.dart';
+import 'package:pizza_delivery/profile/profile_picture.dart';
 import 'package:pizza_delivery/profile/profile_repository.dart';
 import 'package:provider/provider.dart';
 
@@ -44,11 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            SvgPicture.asset(
-              'images/unknown.svg',
-              width: 150,
-              height: 150,
-            ),
+            ProfilePicture(),
             if (_profile != null)
               Expanded(
                 child: ProfileForm(

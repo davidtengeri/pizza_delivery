@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,14 +16,24 @@ import 'package:pizza_delivery/profile/profile_repository.dart';
 import 'package:pizza_delivery/sql.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+Future<void> main() async {
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final camera = cameras.first;
+
   final sql = Sql();
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => CartModel()),
         ChangeNotifierProvider(create: (_) => FavouritesModel()),
         Provider(create: (_) => ProfileRepository(sql: sql)),
+        Provider.value(value: camera),
       ],
       child: PizzaDeliveryApp(),
     ),

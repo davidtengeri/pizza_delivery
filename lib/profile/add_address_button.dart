@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
+import 'package:pizza_delivery/location_service.dart';
 import 'package:pizza_delivery/profile/address_form_dialog.dart';
 import 'package:pizza_delivery/profile/profile_repository.dart';
 import 'package:provider/provider.dart';
@@ -18,6 +19,8 @@ class AddAddressButton extends StatelessWidget {
     if (address != null) {
       // Get the repository through Provider
       var repository = Provider.of<ProfileRepository>(context, listen: false);
+      // Get the latitude and longitude values for that address
+      address.latLng = await LocationService.find(address);
       // Save the address into the DB
       await repository.addAddress(address);
       // Call the callback

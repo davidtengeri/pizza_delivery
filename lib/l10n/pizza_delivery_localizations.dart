@@ -202,6 +202,14 @@ class PizzaDeliveryLocalizations {
       locale: localeName,
     );
   }
+
+  String get takeAPicture {
+    return Intl.message(
+      'Take a picture',
+      name: 'takeAPicture',
+      locale: localeName,
+    );
+  }
 }
 
 class _PizzaDeliveryLocalizationDelegate
