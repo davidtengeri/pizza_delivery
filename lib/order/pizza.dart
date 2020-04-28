@@ -1,3 +1,4 @@
+import 'package:contacts_service/contacts_service.dart';
 import 'package:quiver/core.dart';
 
 class Topping {
@@ -18,6 +19,7 @@ class Pizza {
   String image;
   List<Topping> toppings;
   double price;
+  Contact whoWillEat;
 
   Pizza(this.name, this.image, this.price, this.toppings);
 
@@ -25,9 +27,11 @@ class Pizza {
       other is Pizza &&
       other.image == image &&
       other.name == name &&
-      other.price == price;
+      other.price == price &&
+      other.whoWillEat == whoWillEat;
 
-  int get hashCode => hash3(name.hashCode, image.hashCode, price.hashCode);
+  int get hashCode =>
+      hash4(name.hashCode, image.hashCode, price.hashCode, whoWillEat.hashCode);
 }
 
 final pizzaList = [

@@ -5,12 +5,13 @@ import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/order/cart_model.dart';
 import 'package:pizza_delivery/order/favourites_model.dart';
 import 'package:pizza_delivery/order/pizza.dart';
+import 'package:pizza_delivery/pizza/pizza_toppings.dart';
 import 'package:provider/provider.dart';
 
-class PizzaCard extends StatelessWidget {
+class OrderPizzaCard extends StatelessWidget {
   final Pizza pizza;
 
-  PizzaCard({Key key, @required this.pizza}) : super(key: key);
+  OrderPizzaCard({Key key, @required this.pizza}) : super(key: key);
 
   void addPizzaToCart(BuildContext context) {
     Provider.of<CartModel>(context, listen: false).add(pizza);
@@ -116,46 +117,6 @@ class PizzaCard extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class PizzaToppings extends StatelessWidget {
-  final Pizza pizza;
-
-  const PizzaToppings({
-    Key key,
-    @required this.pizza,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: pizza.toppings
-          .map(
-            (topping) => ToppingImage(
-              topping: topping,
-            ),
-          )
-          .toList(),
-    );
-  }
-}
-
-class ToppingImage extends StatelessWidget {
-  final Topping topping;
-
-  const ToppingImage({Key key, @required this.topping}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(2.0),
-      child: SvgPicture.asset(
-        topping.image,
-        width: 30,
-        height: 30,
       ),
     );
   }

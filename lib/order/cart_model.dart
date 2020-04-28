@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_delivery/order/pizza.dart';
 
@@ -15,6 +16,16 @@ class CartModel with ChangeNotifier {
   // Adds a new pizza to the cart
   void add(Pizza pizza) {
     _items.add(pizza);
+    notifyListeners();
+  }
+
+  void remove(Pizza pizza) {
+    _items.remove(pizza);
+    notifyListeners();
+  }
+
+  void setEater(Pizza pizza, Contact eater) {
+    pizza.whoWillEat = eater;
     notifyListeners();
   }
 

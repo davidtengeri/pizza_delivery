@@ -2,9 +2,11 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:pizza_delivery/cart.dart';
 import 'package:pizza_delivery/cart_button.dart';
 
 import 'package:pizza_delivery/app_colors.dart';
+import 'package:pizza_delivery/contact_chooser.dart';
 import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/main_drawer.dart';
 import 'package:pizza_delivery/order.dart';
@@ -61,6 +63,7 @@ class PizzaDeliveryApp extends StatelessWidget {
         '/': (_) => Home(),
         '/order': (_) => Order(),
         '/profile': (_) => Profile(),
+        '/cart': (_) => Cart(),
       },
       localizationsDelegates: [
         // ... app-specific localization delegate[s] here
