@@ -4,6 +4,7 @@ import 'package:mockito/mockito.dart';
 import 'package:pizza_delivery/location_service.dart';
 import 'package:pizza_delivery/profile/profile_repository.dart';
 
+// Create a simple client based on the original HTTP Client
 class MockClient extends Mock implements http.Client {}
 
 void main() {
@@ -14,6 +15,8 @@ void main() {
       var address =
           Address(city: 'Budapest', street: 'Váci út', houseNumber: '12');
 
+      // Define what happens when we call the get method of the client.
+      // It will return the given result when the method is called with this specific input.
       when(client.get(
               'https://nominatim.openstreetmap.org/search?format=json&counrty=Hungary&city=Budapest&street=12 Váci út'))
           .thenAnswer((_) async => http.Response(
