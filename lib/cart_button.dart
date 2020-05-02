@@ -8,7 +8,9 @@ class CartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      onPressed: null,
+      onPressed: () {
+        Navigator.pushNamed(context, '/cart');
+      },
       child: Stack(
         children: <Widget>[
           Padding(

@@ -45,8 +45,6 @@ class _ProfilePictureState extends State<ProfilePicture> {
 
   @override
   Widget build(BuildContext context) {
-    print('building');
-    print(image?.path);
     return Stack(
       children: <Widget>[
         Container(

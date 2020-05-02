@@ -210,6 +210,47 @@ class PizzaDeliveryLocalizations {
       locale: localeName,
     );
   }
+
+  String get cart {
+    return Intl.message(
+      'Cart',
+      name: 'cart',
+      locale: localeName,
+    );
+  }
+
+  String total(String amount) {
+    return Intl.message(
+      'Total: $amount',
+      name: 'total',
+      args: [amount],
+      locale: localeName,
+    );
+  }
+
+  String get whoWillEat {
+    return Intl.message(
+      'Who will eat this pizza?',
+      name: 'whoWillEat',
+      locale: localeName,
+    );
+  }
+
+  String get chooseContact {
+    return Intl.message(
+      'Choose a contact',
+      name: 'chooseContact',
+      locale: localeName,
+    );
+  }
+
+  String get canNotAccessToContacts {
+    return Intl.message(
+      'Can not access to contact lists',
+      name: 'canNotAccessToContacts',
+      locale: localeName,
+    );
+  }
 }
 
 class _PizzaDeliveryLocalizationDelegate
