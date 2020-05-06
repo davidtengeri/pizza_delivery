@@ -12,6 +12,7 @@ import 'package:pizza_delivery/main_drawer.dart';
 import 'package:pizza_delivery/order.dart';
 import 'package:pizza_delivery/order/cart_model.dart';
 import 'package:pizza_delivery/order/favourites_model.dart';
+import 'package:pizza_delivery/pizza_button.dart';
 import 'package:pizza_delivery/pizza_delivery_logo.dart';
 import 'package:pizza_delivery/profile.dart';
 import 'package:pizza_delivery/profile/profile_repository.dart';
@@ -25,7 +26,7 @@ Future<void> main() async {
   final cameras = await availableCameras();
 
   // Get a specific camera from the list of available cameras.
-  final camera = cameras.first;
+  final camera = cameras.length > 0 ? cameras.first : null;
 
   final sql = Sql();
 
@@ -100,13 +101,8 @@ class Home extends StatelessWidget {
             '/order',
           );
         },
-        child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(50),
-          ),
+        child: PizzaButton(
           padding: EdgeInsets.all(5),
-          child: SvgPicture.asset('images/pizza.svg'),
         ),
       ),
     );

@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:pizza_delivery/add_pizza_to_cart_button.dart';
 import 'package:pizza_delivery/contact_chooser.dart';
 import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/order/cart_model.dart';
@@ -113,12 +114,10 @@ class CartPizzaCard extends StatelessWidget {
                             ),
                         ],
                       ),
-                      RaisedButton(
-                        onPressed: () {
-                          addPizzaToCart(context);
-                        },
-                        child: Icon(Icons.plus_one),
-                      )
+                      AddPizzaToCartButton(
+                        pizza: pizza,
+                        icon: Icons.plus_one,
+                      ),
                     ],
                   ),
                 ],
