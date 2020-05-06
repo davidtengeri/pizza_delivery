@@ -15,7 +15,13 @@ class Order extends StatelessWidget {
       body: Container(
         width: double.infinity,
         padding: EdgeInsets.all(10),
-        child: ListView(
+        child: GridView.count(
+          crossAxisCount:
+              // If we are in a portrait mode use 1 column, otherwise use 2 columns
+              MediaQuery.of(context).orientation == Orientation.portrait
+                  ? 1
+                  : 2,
+          childAspectRatio: 2,
           children:
               pizzaList.map((pizza) => OrderPizzaCard(pizza: pizza)).toList(),
         ),

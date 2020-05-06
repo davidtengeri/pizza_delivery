@@ -1,6 +1,7 @@
 import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pizza_delivery/add_pizza_to_cart_button.dart';
 import 'package:pizza_delivery/l10n/pizza_delivery_localizations.dart';
 import 'package:pizza_delivery/order/cart_model.dart';
 import 'package:pizza_delivery/order/favourites_model.dart';
@@ -12,10 +13,6 @@ class OrderPizzaCard extends StatelessWidget {
   final Pizza pizza;
 
   OrderPizzaCard({Key key, @required this.pizza}) : super(key: key);
-
-  void addPizzaToCart(BuildContext context) {
-    Provider.of<CartModel>(context, listen: false).add(pizza);
-  }
 
   void markPizzaAsFavourite(BuildContext context) {
     Provider.of<FavouritesModel>(context, listen: false).add(pizza);
@@ -81,12 +78,7 @@ class OrderPizzaCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      RaisedButton(
-                        onPressed: () {
-                          addPizzaToCart(context);
-                        },
-                        child: Icon(Icons.add),
-                      ),
+                      AddPizzaToCartButton(pizza: pizza),
                       if (isFavourite(context))
                         RaisedButton(
                           onPressed: () {
